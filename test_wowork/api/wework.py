@@ -1,5 +1,9 @@
 import requests
-class WeWork:
+
+from test_wowork.api.BaseApi import BaseApi
+
+
+class WeWork(BaseApi):
     corpid = "wwe96617ef560b27ec"
     concat_secret = 'qS_a73QUySfC_XLoP__0sm-Q3wyraczCWTgVaoSeKcQ'
     agent_id = 1000002
@@ -9,9 +13,9 @@ class WeWork:
     def get_token(cls):
         if cls.acces_token is None:
             url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken"
-            r=requests.get(url,params={"corpid":"wwe96617ef560b27ec",
-            "corpsecret":"qS_a73QUySfC_XLoP__0sm-Q3wyraczCWTgVaoSeKcQ"}).json()
-            print(r)
+            r=requests.get(url,params={"corpid":cls.corpid,
+            "corpsecret":cls.concat_secret}).json()
+            cls.verbose(r)
             cls.acces_token=r["access_token"]
         return cls.acces_token
 
