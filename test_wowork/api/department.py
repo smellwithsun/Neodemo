@@ -1,4 +1,4 @@
-from test_wowork.api.BaseApi import BaseApi
+from test_wowork.api.base_api import BaseApi
 from test_wowork.api.wework import WeWork
 import requests
 
