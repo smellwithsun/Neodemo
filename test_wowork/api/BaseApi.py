@@ -4,7 +4,7 @@ from test_wowork.utils.Utils import Utils
 class BaseApi:
     json_data = None
     @classmethod
-    def verbose(cls,json_object):
+    def verbose(cls,json_object=json_data):
         print(Utils.format(json_object))
     @classmethod
     def jaonpath(cls,expr):

@@ -9,14 +9,23 @@ class WeWork(BaseApi):
     agent_id = 1000002
     agent_secret = "8pHe2Qdy9OqqBdgkIa4Z3RyHCi-wzPc0jZyyOJ8nvk0"
     acces_token = None
+    url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken"
     @classmethod
     def get_token(cls):
         if cls.acces_token is None:
-            url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken"
-            r=requests.get(url,params={"corpid":cls.corpid,
+            r=requests.get(cls.url,params={"corpid":cls.corpid,
             "corpsecret":cls.concat_secret}).json()
             cls.verbose(r)
             cls.acces_token=r["access_token"]
         return cls.acces_token
+    @classmethod
+    def get_message_token(cls):
+        if cls.acces_token is None:
+            r = requests.get(cls.url, params={"corpid": cls.corpid,
+                                              "corpsecret": cls.agent_secret}).json()
+            cls.verbose(r)
+            cls.acces_token=r["access_token"]
+        return cls.acces_token
+
 
 
