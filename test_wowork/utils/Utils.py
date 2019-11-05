@@ -10,3 +10,6 @@ class Utils:
     @classmethod
     def jsonpath(cls,json_object,expr):
        return jsonpath.jsonpath(json_object,expr)
+    @classmethod
+    def Merge(cls,dict1:dict,dict2:dict):
+        return {**dict1, **dict2}

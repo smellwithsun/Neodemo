@@ -1,5 +1,9 @@
+from test_wowork.api.base_api import BaseApi
+from test_wowork.api.wework import WeWork
 
-class Persons:
+
+class PerSons(BaseApi):
+
     def created_person(self):
         pass
     def read_person(self):
@@ -10,8 +14,12 @@ class Persons:
         pass
     def all_delete_person(self):
         pass
-    def get_department_persons(self):
-        pass
+    def get_department_persons(self,user_id):
+        print(WeWork.get_message_token())
+        get_url = "https://qyapi.weixin.qq.com/cgi-bin/user/get"
+        return self.send_data("get",get_url,WeWork.get_message_token(),{"userid":user_id})
+
+
     def get_department_person_detail(self):
         pass
     def exchange(self):
